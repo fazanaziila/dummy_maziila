@@ -276,7 +276,7 @@ async function openDestinationModal(id) {
                     </div>
                     <p>${destination.description}</p>
                     <div class="mb-4">
-                        <h5>Aktivitas Populer:</h5>
+                        <h5>Tempat Wisata Populer:</h5>
                         <ul class="list-unstyled">
                             ${destination.popular_activities.map(activity => `
                                 <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>${activity}</li>
