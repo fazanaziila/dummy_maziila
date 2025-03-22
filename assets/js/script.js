@@ -259,6 +259,66 @@ async function openDestinationModal(id) {
         const modalBody = document.getElementById('destinationModalBody');
         if (!modalBody) return;
         
+        // Fungsi untuk mendapatkan path gambar berdasarkan nama tempat wisata
+        const getImagePath = (placeName) => {
+            // Mapping nama tempat wisata ke file gambar
+            const imageMap = {
+                // Jakarta
+                "Monumen Nasional (Monas)": "assets/images/Monas.jpg",
+                "Kota Tua Jakarta": "assets/images/Kota Tua.jpg",
+                "Taman Mini Indonesia Indah": "assets/images/TMII.jpg",
+                "Ancol": "assets/images/Ancol.jpg",
+                
+                // Bandung
+                "Kawah Putih": "assets/images/Kawah Putih.jpg",
+                "Tangkuban Perahu": "assets/images/Tangkuban Perahu.jpg",
+                "Jalan Braga": "assets/images/Braga.jpg",
+                "Lembang": "assets/images/Lembang.jpg",
+                
+                // Surabaya
+                "Tugu Pahlawan": "assets/images/Tugu Pahlawan.jpg",
+                "House of Sampoerna": "assets/images/House of Sampoerna.jpg",
+                "Jembatan Suramadu": "assets/images/Jembatan Suramadu.jpg",
+                "Kebun Binatang Surabaya": "assets/images/Kebun Binatang Surabaya.jpg",
+                
+                // Medan
+                "Istana Maimun": "assets/images/Istana Maimun.jpg",
+                "Masjid Raya Medan": "assets/images/Masjid Raya Medan.jpg",
+                "Tjong A Fie Mansion": "assets/images/Tjong A Fie Mansion.jpg",
+                "Danau Toba": "assets/images/Danau Toba.jpg",
+                
+                // Makassar
+                "Pantai Losari": "assets/images/Pantai Losari.jpg",
+                "Benteng Rotterdam": "assets/images/Benterng Rotterdam.jpg",
+                "Pulau Samalona": "assets/images/Pulau Samalona.jpg",
+                
+                // Semarang
+                "Lawang Sewu": "assets/images/Lawang Sewu.jpg",
+                "Kota Lama Semarang": "assets/images/Kota Lama.jpg",
+                "Sam Poo Kong": "assets/images/Sam Poo Kong.jpg",
+                "Masjid Agung Jawa Tengah": "assets/images/Masjid Agung Jawa Tengah.jpg",
+                
+                // Balikpapan
+                "Pantai Kemala": "assets/images/Pantai Kemala.jpg",
+                "Hutan Lindung Sungai Wain": "assets/images/Hutan Lindung Sungai Wain.jpg",
+                "Bukit Bangkirai": "assets/images/Bukit Bangkirai.jpg",
+                
+                // Palembang
+                "Jembatan Ampera": "assets/images/Jembatan Ampera.jpg",
+                "Benteng Kuto Besak": "assets/images/Benteng Kuto Besak.jpg",
+                "Pulau Kemaro": "assets/images/Pulau Kemaro.jpg",
+                "Museum Sultan Mahmud Badaruddin II": "assets/images/Museum Sultan Mahmud Badaruddin II.jpg",
+                
+                // Manado
+                "Taman Nasional Bunaken": "assets/images/Bunaken.jpg",
+                "Bukit Kasih": "assets/images/Bukit Kasih.jpg",
+                "Danau Tondano": "assets/images/Danau Tondano.jpg",
+                "Pulau Siladen": "assets/images/Pulau Siladen.jpg"
+            };
+            
+            return imageMap[placeName] || destination.image;
+        };
+        
         modalBody.innerHTML = `
             <div class="row">
                 <div class="col-md-6 mb-4 mb-md-0">
@@ -277,11 +337,18 @@ async function openDestinationModal(id) {
                     <p>${destination.description}</p>
                     <div class="mb-4">
                         <h5>Tempat Wisata Populer:</h5>
-                        <ul class="list-unstyled">
+                        <div class="row">
                             ${destination.popular_activities.map(activity => `
-                                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>${activity}</li>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card popular-place-card h-100">
+                                        <img src="${getImagePath(activity)}" class="card-img-top" alt="${activity}">
+                                        <div class="card-body">
+                                            <p class="card-text"><i class="fas fa-map-marker-alt text-primary me-1"></i>${activity}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             `).join('')}
-                        </ul>
+                        </div>
                     </div>
                     <div>
                         <h5>Waktu Terbaik untuk Berkunjung:</h5>

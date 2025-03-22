@@ -17,7 +17,7 @@
       "description": "Kota Kembang dan Surga Belanja. Bandung terkenal dengan udara sejuk, wisata belanja, serta kekayaan kuliner khas Sunda. Kota ini juga memiliki banyak tempat wisata alam yang indah, seperti kawah vulkanik dan perbukitan yang hijau.",
       "image": "assets/images/Tangkuban Perahu.jpg",
       "rating": 4.8,
-      "popular_activities": ["Kawah Putih", "Tangkuban Perahu", "Braga", "Lembang"],
+      "popular_activities": ["Kawah Putih", "Tangkuban Perahu", "Jalan Braga", "Lembang"],
       "best_time_to_visit": "June - August"
     },
     {
@@ -47,7 +47,7 @@
       "description": "Kota Pelabuhan dan Wisata Bahari. Makassar adalah kota pelabuhan utama di Indonesia Timur yang terkenal dengan sejarah bahari dan kuliner khas seperti Coto Makassar serta Pisang Epe. Kota ini juga merupakan gerbang menuju wisata bahari seperti Taman Nasional Taka Bonerate.",
       "image": "assets/images/Pantai Losari.jpg",
       "rating": 4.6,
-      "popular_activities": ["Pantai Losari", "Benterng Rotterdam", "Pulau Samalona", "Trans Studio Makassar"],
+      "popular_activities": ["Pantai Losari", "Benteng Rotterdam", "Pulau Samalona", "Trans Studio Makassar"],
       "best_time_to_visit": "April - October"
     },
     {
@@ -57,7 +57,7 @@
       "description": "Kota Pelabuhan dan Warisan Kolonial. Sebagai ibu kota Jawa Tengah, Semarang memiliki sejarah panjang dengan bangunan kolonial yang masih terawat. Kota ini juga terkenal dengan wisata kuliner seperti lumpia dan tahu gimbal.",
       "image": "assets/images/Lawang Sewu.jpg",
       "rating": 4.5,
-      "popular_activities": ["Lawang Sewu", "Kota Lama", "Sam Poo Kong", "Masjid Agung Jawa Tengah"],
+      "popular_activities": ["Lawang Sewu", "Kota Lama Semarang", "Sam Poo Kong", "Masjid Agung Jawa Tengah"],
       "best_time_to_visit": "May - September"
     },
     {
