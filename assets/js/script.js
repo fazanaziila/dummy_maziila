@@ -1,9 +1,3 @@
-/**
- * Maziila Travel - Main JavaScript File
- * Menangani data dan interaksi untuk website Maziila Travel
- * Version 1.0
- */
-
 // Fungsi untuk mengambil data dari file JSON
 async function fetchData(file) {
     try {
@@ -264,56 +258,56 @@ async function openDestinationModal(id) {
             // Mapping nama tempat wisata ke file gambar
             const imageMap = {
                 // Jakarta
-                "Monumen Nasional (Monas)": "assets/images/Monas.jpg",
-                "Kota Tua Jakarta": "assets/images/Kota Tua.jpg",
-                "Taman Mini Indonesia Indah": "assets/images/TMII.jpg",
-                "Ancol": "assets/images/Ancol.jpg",
+                "Monumen Nasional (Monas)": "assets/images/destinations/Monas.jpg",
+                "Kota Tua Jakarta": "assets/images/destinations/Kota Tua.jpg",
+                "Taman Mini Indonesia Indah": "assets/images/destinations/TMII.jpg",
+                "Ancol": "assets/images/destinations/Ancol.jpg",
                 
                 // Bandung
-                "Kawah Putih": "assets/images/Kawah Putih.jpg",
-                "Tangkuban Perahu": "assets/images/Tangkuban Perahu.jpg",
-                "Jalan Braga": "assets/images/Braga.jpg",
-                "Lembang": "assets/images/Lembang.jpg",
+                "Kawah Putih": "assets/images/destinations/Kawah Putih.jpg",
+                "Tangkuban Perahu": "assets/images/destinations/Tangkuban Perahu.jpg",
+                "Jalan Braga": "assets/images/destinations/Braga.jpg",
+                "Lembang": "assets/images/destinations/Lembang.jpg",
                 
                 // Surabaya
-                "Tugu Pahlawan": "assets/images/Tugu Pahlawan.jpg",
-                "House of Sampoerna": "assets/images/House of Sampoerna.jpg",
-                "Jembatan Suramadu": "assets/images/Jembatan Suramadu.jpg",
-                "Kebun Binatang Surabaya": "assets/images/Kebun Binatang Surabaya.jpg",
+                "Tugu Pahlawan": "assets/images/destinations/Tugu Pahlawan.jpg",
+                "House of Sampoerna": "assets/images/destinations/House of Sampoerna.jpg",
+                "Jembatan Suramadu": "assets/images/destinations/Jembatan Suramadu.jpg",
+                "Kebun Binatang Surabaya": "assets/images/destinations/Kebun Binatang Surabaya.jpg",
                 
                 // Medan
-                "Istana Maimun": "assets/images/Istana Maimun.jpg",
-                "Masjid Raya Medan": "assets/images/Masjid Raya Medan.jpg",
-                "Tjong A Fie Mansion": "assets/images/Tjong A Fie Mansion.jpg",
-                "Danau Toba": "assets/images/Danau Toba.jpg",
+                "Istana Maimun": "assets/images/destinations/Istana Maimun.jpg",
+                "Masjid Raya Medan": "assets/images/destinations/Masjid Raya Medan.jpg",
+                "Tjong A Fie Mansion": "assets/images/destinations/Tjong A Fie Mansion.jpg",
+                "Danau Toba": "assets/images/destinations/Danau Toba.jpg",
                 
                 // Makassar
-                "Pantai Losari": "assets/images/Pantai Losari.jpg",
-                "Benteng Rotterdam": "assets/images/Benterng Rotterdam.jpg",
-                "Pulau Samalona": "assets/images/Pulau Samalona.jpg",
+                "Pantai Losari": "assets/images/destinations/Pantai Losari.jpg",
+                "Benteng Rotterdam": "assets/images/destinations/Benterng Rotterdam.jpg",
+                "Pulau Samalona": "assets/images/destinations/Pulau Samalona.jpg",
                 
                 // Semarang
-                "Lawang Sewu": "assets/images/Lawang Sewu.jpg",
-                "Kota Lama Semarang": "assets/images/Kota Lama.jpg",
-                "Sam Poo Kong": "assets/images/Sam Poo Kong.jpg",
-                "Masjid Agung Jawa Tengah": "assets/images/Masjid Agung Jawa Tengah.jpg",
+                "Lawang Sewu": "assets/images/destinations/Lawang Sewu.jpg",
+                "Kota Lama Semarang": "assets/images/destinations/Kota Lama.jpg",
+                "Sam Poo Kong": "assets/images/destinations/Sam Poo Kong.jpg",
+                "Masjid Agung Jawa Tengah": "assets/images/destinations/Masjid Agung Jawa Tengah.jpg",
                 
                 // Balikpapan
-                "Pantai Kemala": "assets/images/Pantai Kemala.jpg",
-                "Hutan Lindung Sungai Wain": "assets/images/Hutan Lindung Sungai Wain.jpg",
-                "Bukit Bangkirai": "assets/images/Bukit Bangkirai.jpg",
+                "Pantai Kemala": "assets/images/destinations/Pantai Kemala.jpg",
+                "Hutan Lindung Sungai Wain": "assets/images/destinations/Hutan Lindung Sungai Wain.jpg",
+                "Bukit Bangkirai": "assets/images/destinations/Bukit Bangkirai.jpg",
                 
                 // Palembang
-                "Jembatan Ampera": "assets/images/Jembatan Ampera.jpg",
-                "Benteng Kuto Besak": "assets/images/Benteng Kuto Besak.jpg",
-                "Pulau Kemaro": "assets/images/Pulau Kemaro.jpg",
-                "Museum Sultan Mahmud Badaruddin II": "assets/images/Museum Sultan Mahmud Badaruddin II.jpg",
+                "Jembatan Ampera": "assets/images/destinations/Jembatan Ampera.jpg",
+                "Benteng Kuto Besak": "assets/images/destinations/Benteng Kuto Besak.jpg",
+                "Pulau Kemaro": "assets/images/destinations/Pulau Kemaro.jpg",
+                "Museum Sultan Mahmud Badaruddin II": "assets/images/destinations/Museum Sultan Mahmud Badaruddin II.jpg",
                 
                 // Manado
-                "Taman Nasional Bunaken": "assets/images/Bunaken.jpg",
-                "Bukit Kasih": "assets/images/Bukit Kasih.jpg",
-                "Danau Tondano": "assets/images/Danau Tondano.jpg",
-                "Pulau Siladen": "assets/images/Pulau Siladen.jpg"
+                "Taman Nasional Bunaken": "assets/images/destinations/Bunaken.jpg",
+                "Bukit Kasih": "assets/images/destinations/Bukit Kasih.jpg",
+                "Danau Tondano": "assets/images/destinations/Danau Tondano.jpg",
+                "Pulau Siladen": "assets/images/destinations/Pulau Siladen.jpg"
             };
             
             return imageMap[placeName] || destination.image;
