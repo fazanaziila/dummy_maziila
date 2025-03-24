@@ -211,26 +211,6 @@
       "best_time_to_visit": "April - August"
     },
     {
-      "id": 22,
-      "name": "Dieng Plateau",
-      "location": "Jawa Tengah",
-      "description": "Dataran tinggi vulkanik dengan candi kuno, danau berwarna, dan fenomena anak berambut gimbal.",
-      "image": "assets/images/destinations/dieng.jpg",
-      "rating": 4.5,
-      "popular_activities": ["Golden Sunrise", "Temple Visits", "Colored Lakes", "Crater Walk"],
-      "best_time_to_visit": "July - August"
-    },
-    {
-      "id": 23,
-      "name": "Bunaken",
-      "location": "Sulawesi Utara",
-      "description": "Taman laut nasional dengan keanekaragaman hayati bawah laut yang luar biasa.",
-      "image": "assets/images/destinations/bunaken.jpg",
-      "rating": 4.8,
-      "popular_activities": ["Diving", "Snorkeling", "Marine Life Observation", "Beach Activities"],
-      "best_time_to_visit": "April - October"
-    },
-    {
       "id": 24,
       "name": "Wae Rebo",
       "location": "Nusa Tenggara Timur",

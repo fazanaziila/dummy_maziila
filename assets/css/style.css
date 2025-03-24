@@ -50,9 +50,9 @@ img {
 }
 
 .btn-primary:hover, .btn-primary:focus {
-    background-color: #ff5252;
-    border-color: #ff5252;
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.4);
 }
 
 .btn-outline-primary {
