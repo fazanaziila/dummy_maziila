@@ -1,4 +1,45 @@
-// Fungsi untuk mengambil data dari file JSON
+/*
+ * IMPLEMENTASI JAVASCRIPT UNTUK SEMUA HALAMAN
+ * File ini berisi fungsi-fungsi yang digunakan di berbagai halaman website
+ * 
+ * Implementasi pada halaman:
+ * 1. index.html:
+ *    - Video background di hero section
+ *    - Menampilkan featured destinations
+ *    - Menampilkan popular packages
+ *    - Loading screen
+ * 
+ * 2. about.html:
+ *    - Navbar scroll effect
+ *    - Loading screen
+ *    - Fungsi umum (format Rupiah, rating bintang)
+ * 
+ * 3. booking.html:
+ *    - Loading screen
+ *    - Navbar scroll effect
+ *    - Fungsi format data
+ * 
+ * 4. contact.html:
+ *    - Form submission handling
+ *    - Loading screen
+ *    - Navbar scroll effect
+ * 
+ * 5. destinations.html:
+ *    - Menampilkan featured destinations
+ *    - Loading screen
+ *    - Navbar scroll effect
+ * 
+ * 6. packages.html:
+ *    - Menampilkan popular packages
+ *    - Package selection
+ *    - Loading screen
+ *    - Navbar scroll effect
+ */
+
+/* 
+ * FUNGSI UTAMA UNTUK MENGAMBIL DATA
+ * Digunakan di semua halaman untuk fetch data JSON
+ */
 async function fetchData(file) {
     try {
         const response = await fetch(file);
@@ -13,7 +54,10 @@ async function fetchData(file) {
     }
 }
 
-// Fungsi untuk memformat harga dalam format Rupiah
+/*
+ * FUNGSI FORMAT RUPIAH
+ * Digunakan di semua halaman untuk format harga
+ */
 function formatRupiah(price) {
     return new Intl.NumberFormat('id-ID', {
         style: 'currency',
@@ -22,7 +66,13 @@ function formatRupiah(price) {
     }).format(price);
 }
 
-// Fungsi untuk mengambil dan menampilkan destinasi unggulan pada halaman beranda
+/*
+ * FUNGSI FEATURED DESTINATIONS
+ * Implementasi: index.html, destinations.html
+ * - Menampilkan destinasi unggulan
+ * - Sort berdasarkan rating
+ * - Limit 6 destinasi teratas
+ */
 async function loadFeaturedDestinations() {
     const container = document.getElementById('featured-destinations-container');
     if (!container) return;
@@ -71,7 +121,13 @@ async function loadFeaturedDestinations() {
     }
 }
 
-// Fungsi untuk mengambil dan menampilkan paket populer pada halaman beranda
+/*
+ * FUNGSI POPULAR PACKAGES
+ * Implementasi: index.html, packages.html
+ * - Menampilkan paket wisata populer
+ * - Sort berdasarkan rating
+ * - Limit 3 paket teratas
+ */
 async function loadPopularPackages() {
     const container = document.getElementById('popular-packages-container');
     if (!container) return;
@@ -120,7 +176,12 @@ async function loadPopularPackages() {
     }
 }
 
-// Fungsi untuk menghasilkan rating bintang
+/*
+ * FUNGSI GENERATE STAR RATING
+ * Implementasi: Semua halaman yang menampilkan rating
+ * - Menghasilkan HTML untuk tampilan bintang
+ * - Support untuk setengah bintang
+ */
 function generateStarRating(rating) {
     let stars = '';
     const fullStars = Math.floor(rating);
@@ -142,7 +203,13 @@ function generateStarRating(rating) {
     return stars;
 }
 
-// Fungsi untuk menampilkan semua destinasi pada halaman destinasi
+/*
+ * FUNGSI LOAD ALL DESTINATIONS
+ * Implementasi: destinations.html
+ * - Menampilkan semua destinasi
+ * - Fitur filter dan search
+ * - Tampilan card dengan detail lengkap
+ */
 async function loadAllDestinations() {
     const container = document.getElementById('destinations-container');
     if (!container) return;
@@ -191,7 +258,13 @@ async function loadAllDestinations() {
     }
 }
 
-// Fungsi untuk menampilkan semua paket wisata pada halaman paket
+/*
+ * FUNGSI LOAD ALL PACKAGES
+ * Implementasi: packages.html
+ * - Menampilkan semua paket wisata
+ * - Fitur filter berdasarkan harga dan durasi
+ * - Tampilan card dengan detail lengkap
+ */
 async function loadAllPackages() {
     const container = document.getElementById('packages-container');
     if (!container) return;
@@ -241,7 +314,13 @@ async function loadAllPackages() {
     }
 }
 
-// Fungsi untuk menampilkan detail destinasi pada modal
+/*
+ * FUNGSI DESTINATION MODAL
+ * Implementasi: destinations.html
+ * - Menampilkan detail destinasi dalam modal
+ * - Galeri tempat wisata populer
+ * - Informasi lengkap destinasi
+ */
 async function openDestinationModal(id) {
     try {
         const data = await fetchData('data/destinations.json');
@@ -469,14 +548,26 @@ async function openDestinationModal(id) {
     }
 }
 
-// Fungsi untuk menangani tombol booking dari modal paket
+/*
+ * FUNGSI BOOKING REDIRECT
+ * Implementasi: packages.html -> booking.html
+ * - Menyimpan ID paket yang dipilih
+ * - Redirect ke halaman booking
+ */
 function redirectToBooking(packageId) {
     // Simpan ID paket di sessionStorage untuk diambil di halaman booking
     sessionStorage.setItem('selectedPackageId', packageId);
     window.location.href = 'booking.html';
 }
 
-// Fungsi untuk menampilkan detail paket wisata pada modal
+/*
+ * FUNGSI PACKAGE MODAL
+ * Implementasi: packages.html
+ * - Menampilkan detail paket dalam modal
+ * - Informasi harga dan durasi
+ * - Daftar destinasi yang dikunjungi
+ * - Tombol untuk booking
+ */
 async function openPackageModal(id) {
     try {
         const packagesData = await fetchData('data/packages.json');
@@ -545,15 +636,15 @@ async function openPackageModal(id) {
             </div>
         `;
         
-        // Simpan ID paket ke dalam modal
-        const packageModal = document.getElementById('packageModal');
-        if (packageModal) {
-            packageModal._packageId = id;
-        }
-        
         // Tampilkan modal
         const modal = new bootstrap.Modal(document.getElementById('packageModal'));
         modal.show();
+        
+        // Event listener untuk tombol booking
+        const bookingBtn = document.getElementById('bookingBtn');
+        if (bookingBtn) {
+            bookingBtn.onclick = () => redirectToBooking(id);
+        }
     } catch (error) {
         console.error(`Terjadi kesalahan: ${error}`);
     }
@@ -688,74 +779,44 @@ function initContactForm() {
     });
 }
 
-// Event listener untuk saat dokumen selesai dimuat
-document.addEventListener('DOMContentLoaded', function() {
-    // Video background rotation
-    function rotateVideos() {
-        const videos = document.querySelectorAll('.video-background video');
-        if (videos.length > 0) {
-            let currentVideoIndex = 0;
-            
-            setInterval(() => {
-                // Sembunyikan semua video
-                videos.forEach(video => {
-                    video.classList.remove('active');
-                    video.style.opacity = 0;
-                });
-                
-                // Tampilkan video berikutnya
-                currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-                videos[currentVideoIndex].classList.add('active');
-                videos[currentVideoIndex].style.opacity = 1;
-            }, 5000); // Ganti video setiap 5 detik
-        }
-    }
-
-    // Navbar scroll behavior
-    const navbar = document.querySelector('.navbar');
-    
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-dark', 'navbar-scrolled');
-            } else {
-                navbar.classList.remove('bg-dark', 'navbar-scrolled');
+// Fungsi untuk menginisialisasi newsletter subscription
+function initNewsletter() {
+    document.querySelectorAll('.btn-primary[type="button"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            if (input && input.value) {
+                const modal = new bootstrap.Modal(document.getElementById('newsletterModal'));
+                modal.show();
+                input.value = '';
             }
         });
-    }
-    
-    // Inisialisasi fungsi-fungsi halaman berdasarkan halaman yang sedang dibuka
-    const currentPage = window.location.pathname;
-    
-    if (currentPage.includes('index.html') || currentPage.endsWith('/')) {
-        loadFeaturedDestinations();
-        loadPopularPackages();
-        rotateVideos();
-    } else if (currentPage.includes('destinations.html')) {
-        loadAllDestinations();
-    } else if (currentPage.includes('packages.html')) {
-        loadAllPackages();
-    } else if (currentPage.includes('contact.html')) {
-        initContactForm();
-    }
-    
-    // Inisialisasi tooltips
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+}
 
-    // Tambahkan event listener untuk tombol booking di modal
-    const bookingBtn = document.getElementById('bookingBtn');
-    if (bookingBtn) {
-        bookingBtn.addEventListener('click', function() {
-            // Dapatkan ID paket yang sedang aktif di modal
-            const packageModal = document.getElementById('packageModal');
-            if (packageModal && packageModal._packageId) {
-                redirectToBooking(packageModal._packageId);
-            }
-        });
-    }
+// Inisialisasi semua fungsi saat dokumen dimuat
+document.addEventListener('DOMContentLoaded', function() {
+    // Inisialisasi loading screen
+    setTimeout(function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+    }, 1000);
+
+    // Inisialisasi newsletter
+    initNewsletter();
+
+    // Load data berdasarkan halaman
+    loadFeaturedDestinations();
+    loadPopularPackages();
+    loadAllDestinations();
+    loadAllPackages();
+    initDestinationSearch();
+    initPackageSearch();
+    initContactForm();
 });
 
 // Definisikan fungsi untuk global scope agar bisa dipanggil dari event handler HTML
